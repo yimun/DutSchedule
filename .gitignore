@@ -16,6 +16,7 @@ local.properties
 .settings/
 .loadpath
 .idea/
+R.java
 # External tool builders
 .externalToolBuilders/
 
