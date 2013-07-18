@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout="@drawable/back2" android:shouldDisableView="true">
+	<ListPreference 
+		android:entries="@array/auto_update_frequency_entry" 
+		android:negativeButtonText="@string/cancel" 
+		android:dialogTitle="@string/auto_update_frequency_title" 
+		android:summary="@string/auto_update_frequency_summary" 
+		android:key="@string/auto_update_frequency_key" 
+		android:title="@string/auto_update_frequency_title" 
+		android:defaultValue="@string/auto_update_frequency_default_value" 
+		android:entryValues="@array/auto_update_frequency_entry">
+	</ListPreference>
+		<ListPreference 
+		android:entries="@array/classno_entry" 
+		android:negativeButtonText="@string/cancel" 
+		android:entryValues="@array/classno_value" 
+		android:enabled="false"
+		android:key="@string/class_no_key" 
+		android:title="@string/class_no_title" 
+		android:defaultValue="@string/class_no_default_value">
+	</ListPreference>
+	<PreferenceCategory
+		android:key="@string/classdetail_key"
+		android:title="@string/classdetail_title"
+		android:enabled="false"
+	>
+			<EditTextPreference 
+			android:dialogTitle="@string/class_name" 
+			android:key="@string/class_name" 
+			android:title="@string/class_name"/>
+			
+			<EditTextPreference 
+			android:dialogTitle="@string/class_address" 
+			android:key="@string/class_address" 
+			android:title="@string/class_address">
+			</EditTextPreference>
+			
+			<EditTextPreference 
+			android:dialogTitle="@string/class_weeks" 
+			android:key="@string/class_weeks" 
+			android:title="@string/class_weeks">
+			</EditTextPreference>
+	</PreferenceCategory>
+</PreferenceScreen>

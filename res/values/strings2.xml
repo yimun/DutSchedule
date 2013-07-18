@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Main!</string>
+
+
+    <string name="about">关于</string>
+    <string name="aboutcontent">桌面课表-1.0版</string>
+    <string name="aboutauthor">易木出品</string>
+    <string name="yes">确定</string>
+    <string name="editclass">编辑课表</string>
+    <string name="system_set">设置</string>
+    <string name="now">   今天课程</string>
+    <string name="auto_update_frequency_title">选择星期</string>
+    <string name="auto_update_frequency_key">auto_update_frequency</string>
+    <string name="auto_update_frequency_default_value">10</string>
+    <string name="class_no_title">选择节次</string>
+    <string name="class_no_key">class_no</string>
+    <string name="class_no_default_value">第一大节</string>
+    <string name="cancel">取消</string>
+    <string name="classdetail_title">课程详情</string>
+    <string name="classdetail_key">classdetail</string>
+    <string name="reload">刷新</string>
+    <string name="class_name">课程名称</string>
+    <string name="class_address">上课地点</string>
+    <string name="class_weeks">上课周数</string>
+    <string name="view_1">view_1</string>
+    <string name="view_2">view_2</string>
+    <string name="view_3">view_3</string>
+    <string name="view_4">view_4</string>
+    <string name="view_5">view_5</string>
+    <string name="view_6">view_6</string>
+    <string name="bg_title">背景</string>
+    <string name="bg_key">bg</string>
+    <string name="bg_default_value">0</string>
+    <string name="set">设置</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="auto_update_frequency_summary"/>
+
+</resources>

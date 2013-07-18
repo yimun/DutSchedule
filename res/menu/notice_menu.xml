@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/item1" android:title="学校官网"></item>
+    <item android:id="@+id/item2" android:title="校园门户"></item>
+    <item android:id="@+id/item3" android:title="校团委网站"></item>
+    
+
+</menu>

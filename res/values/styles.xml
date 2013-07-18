@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+<style name="CustomTheme1">
+<item name="android:windowNoTitle">true</item>
+<item name="android:windowBackground">@drawable/beijing22</item>
+</style>
+
+
+<style name="CustomTheme2">
+<item name="android:windowNoTitle">true</item>
+<item name="android:windowBackground">@drawable/beijing22</item>
+</style>
+
+<style name="CustomTheme3">
+<item name="android:windowNoTitle">true</item>
+<item name="android:windowBackground">@drawable/bg3</item>
+</style>
+</resources>

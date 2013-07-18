@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/kao"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/beijing22"
+    tools:context=".MainActivity" >
+
+   <RelativeLayout
+       android:id="@+id/titlelayout"
+       android:layout_width="fill_parent"
+       android:layout_height="47dp"
+       android:layout_gravity="top"
+       android:background="@drawable/top_kaoshi"
+       android:paddingTop="0dp" >
+
+            <TextView
+                android:id="@+id/maintitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="考试信息"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <Button
+                android:id="@+id/refresh"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bt_refresh" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bt_back"
+                android:onClick="bt_back" />
+
+       </RelativeLayout>
+    
+    <ListView
+        android:id="@+id/lv01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/titlelayout"
+        android:divider="@drawable/cursorbase" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

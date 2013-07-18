@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:umadsdk="http://schemas.android.com/apk/res/com.LoveBus"
+    android:id="@+id/chairlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:id="@+id/titlelayout"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp"
+        android:layout_gravity="top"
+        android:background="@drawable/bpush_top_bg"
+        android:paddingTop="0dp" >
+        <Button
+                android:id="@+id/button1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bt_back"
+                android:onClick="bt_back" />
+
+            <TextView
+                android:id="@+id/maintitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="本学期讲座信息"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+       </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/searchlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/titlelayout"
+        android:gravity="bottom"
+        android:orientation="vertical" >
+
+        <!--
+         <Button
+        android:id="@+id/btnSelectWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SelectWord" />
+        -->
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"
+            android:background="@drawable/beijing22" />
+
+    </LinearLayout>
+
+</RelativeLayout>
