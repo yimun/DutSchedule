@@ -16,10 +16,17 @@ public final class R {
 		public static final int mediacontroller_play01 = 0x7f020047;
 		public static final int mediacontroller_play02 = 0x7f020048;
 		public static final int mediacontroller_play_button = 0x7f020049;
-		public static final int mediacontroller_seekbar = 0x7f02004a;
-		public static final int mediacontroller_seekbar01 = 0x7f02004b;
-		public static final int mediacontroller_seekbar02 = 0x7f02004c;
-		public static final int mediacontroller_seekbar_thumb = 0x7f02004d;
+		public static final int mediacontroller_seekbar01 = 0x7f02004a;
+		public static final int mediacontroller_seekbar02 = 0x7f02004b;
+		public static final int scrubber_control_disabled_holo = 0x7f02005a;
+		public static final int scrubber_control_focused_holo = 0x7f02005b;
+		public static final int scrubber_control_normal_holo = 0x7f02005c;
+		public static final int scrubber_control_pressed_holo = 0x7f02005d;
+		public static final int scrubber_control_selector_holo = 0x7f02005e;
+		public static final int scrubber_primary_holo = 0x7f02005f;
+		public static final int scrubber_progress_horizontal_holo_dark = 0x7f020060;
+		public static final int scrubber_secondary_holo = 0x7f020061;
+		public static final int scrubber_track_holo_dark = 0x7f020062;
 	}
 	public static final class id {
 		public static final int mediacontroller_file_name = 0x7f0c0097;
