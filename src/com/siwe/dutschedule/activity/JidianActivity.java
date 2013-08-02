@@ -16,8 +16,8 @@ import android.os.Looper;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.siwe.dutschedule.R;
 import com.siwe.dutschedule.infoGeter.JidianGeter;
-import com.siwe.dutschedule.setting_edit.SetBackgroundImage;
 import com.umeng.analytics.MobclickAgent;
 
 public class JidianActivity extends Activity{
@@ -184,7 +183,7 @@ public class JidianActivity extends Activity{
 	public class GetJidianTask extends AsyncTask<Void, Void, Boolean> {
 		@Override
 		protected void onPreExecute(){
-			SharedPreferences sharedPrefrences =getSharedPreferences("filename", MODE_PRIVATE);
+			SharedPreferences sharedPrefrences =getSharedPreferences("user", MODE_PRIVATE);
 			param = sharedPrefrences.getString("usernamepassword", "zjh=201281084&mm=755213");
 			System.out.println("param="+param);	
 			progressbar.setVisibility(View.VISIBLE);

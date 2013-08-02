@@ -123,7 +123,7 @@ public class KaoActivity extends Activity {
 			isContinue = true;
 			mysql = myOpenHelper.getReadableDatabase();
 			SharedPreferences sharedPrefrences = getSharedPreferences(
-					"filename", MODE_PRIVATE);
+					"user", MODE_PRIVATE);
 			param = sharedPrefrences.getString("usernamepassword", null);
 			System.out.println("param=" + param);
 			progressbar.setVisibility(View.VISIBLE);

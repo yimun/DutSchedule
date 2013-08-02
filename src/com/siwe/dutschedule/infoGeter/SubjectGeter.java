@@ -49,7 +49,7 @@ public class SubjectGeter extends InfoGeter {
 	@Override
 	public void dealStr(String get) {
 		String[] result = get.split("/&&/");
-		String[] result2;
+		String[] result2;	
 		myOpenHelper = new MySQLiteOpenHelper(super.context);
 		mysql = myOpenHelper.getReadableDatabase();
 
@@ -127,7 +127,7 @@ public class SubjectGeter extends InfoGeter {
 	private void saveParam(){
 		Editor editor;
 		//context.getSharedPreferences(FILENAME, context.MODE_PRIVATE);
-		editor = context.getSharedPreferences("filename", Context.MODE_PRIVATE).edit();
+		editor = context.getSharedPreferences("user", Context.MODE_PRIVATE).edit();
 		editor.putString("usernamepassword", param);
 		editor.commit();
 	}
