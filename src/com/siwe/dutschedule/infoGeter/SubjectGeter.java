@@ -33,7 +33,7 @@ public class SubjectGeter extends InfoGeter {
 	@Override
 	public String format(String get) {
 		get = Regular.eregi_replace("(\\s)*", "", get);
-		get = Regular.eregi_replace("(集中周|非集中周)*", "", get);
+		get = Regular.eregi_replace("(集中周|非集中周|必修|选修|任选)*", "", get);
 		get = Regular.eregi_replace("(<htmllang=)(.)*(教室)", "", get);
 		get = Regular.eregi_replace("(function)(.)*?(</html>)", "", get);
 		get = Regular.eregi_replace("(<)(.)*?(>)", "/", get);
@@ -69,19 +69,19 @@ public class SubjectGeter extends InfoGeter {
 			System.out.println(result[i]);
 			result2 = result[i].split("/");
 			for (int j = 0; j < result2.length; j++) {
-				if (result2.length == 15) {// 一周一节
+				if (result2.length == 14) {// 一周一节
 					judgeByNum(mysql, result2, 1);
 				}
 
-				if (result2.length == 22) { // 一周两节
+				if (result2.length == 21) { // 一周两节
 					judgeByNum(mysql, result2, 2);
 				}
 
-				if (result2.length == 29) { // 一周三节
+				if (result2.length == 28) { // 一周三节
 					judgeByNum(mysql, result2, 3);
 				}
 
-				if (result2.length == 36) { // 一周四节
+				if (result2.length == 35) { // 一周四节
 					judgeByNum(mysql, result2, 4);
 				}
 			}
@@ -98,9 +98,9 @@ public class SubjectGeter extends InfoGeter {
 	 */
 	public void judgeByNum(SQLiteDatabase db, String[] test, int bug) {
 		for (int i = 0; i < bug; i++) {
-			Integer no = Integer.parseInt(test[10 + i * 7], 10); // 将字符串转化为int
+			Integer no = Integer.parseInt(test[9 + i * 7], 10); // 将字符串转化为int
 																	// 节次13579
-			Integer numbers = Integer.parseInt(test[11 + i * 7], 10); // 节数 2 3
+			Integer numbers = Integer.parseInt(test[10 + i * 7], 10); // 节数 2 3
 			// 4 6 8
 			int flag = numbers / 2;
 
@@ -110,11 +110,11 @@ public class SubjectGeter extends InfoGeter {
 
 				db.execSQL("update " + TABLE_NAME + " set " + ClassId + "='"
 						+ test[0] + "', " + Name + "='" + test[1] + "',"
-						+ Point + "='" + test[3] + "'," + Type + "='" + test[4]
-						+ "'," + Teacher + "='" + test[5] + "'," + Weeks + "='"
-						+ test[8 + i * 7] + "'," + Address + "='"
-						+ test[13 + i * 7] + test[14 + i * 7] + "' where "
-						+ Day + "='" + test[9 + i * 7] + "' and " + No + "='"
+						+ Point + "='" + test[3] + "'," + Type + "='" + test[6]
+						+ "'," + Teacher + "='" + test[4] + "'," + Weeks + "='"
+						+ test[7 + i * 7] + "'," + Address + "='"
+						+ test[12 + i * 7] + test[13 + i * 7] + "' where "
+						+ Day + "='" + test[8 + i * 7] + "' and " + No + "='"
 						+ temp2 + "';");
 			}
 		}
