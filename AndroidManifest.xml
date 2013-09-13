@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.siwe.dutschedule"
-    android:versionCode="4"
-    android:versionName="2.1" ><!--  测试更改 wang -->
+    android:installLocation="preferExternal"
+    android:versionCode="8"
+    android:versionName="2.2.1" >
+ <!-- 使其能够在拓展存储上安装应用 -->
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="7"	
         android:targetSdkVersion="16" />
 
     <application
@@ -15,7 +17,7 @@
         android:hardwareAccelerated="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:logo="@drawable/ic_launcher" >
+        android:logo="@drawable/logo" >
         <activity
             android:name=".activity.SplashActivity"
             android:label="@string/app_name"
@@ -54,7 +56,6 @@
 
         <activity android:name=".activity.ChangeBackgroundActivity" >
         </activity>
-
         <activity
             android:name=".activity.AboutActivity"
             android:label="@string/title_activity_about" >
@@ -69,18 +70,17 @@
             android:name=".activity.ChairActivity"
             android:label="@string/title_activity_chair" >
         </activity>
-       
         <activity
             android:name=".activity.DetailActivity"
             android:label="@string/title_activity_detail" >
         </activity>
-        <activity
-            android:name="com.umeng.fb.ui.SendFeedback"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.umeng.fb.ui.FeedbackConversations" />
-        <activity
-            android:name="com.umeng.fb.ui.FeedbackConversation"
-            android:configChanges="keyboard" />
+
+        <!-- ############# Umeng ###################### -->
+        <activity android:name="com.umeng.fb.ConversationActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        
+        <activity android:name="com.umeng.fb.ContactActivity" 
+            android:theme="@android:style/Theme.NoTitleBar"/>
 
         <meta-data
             android:name="UMENG_APPKEY"
@@ -98,12 +98,9 @@
 
         <activity
             android:name=".activity.MainActivity"
-            android:label="模块中心" >
+            android:label="大工助手" >
         </activity>
-        <activity
-            android:name=".activity.Setting"
-            android:label="消息中心" >
-        </activity>
+       
 
         <!-- ####################### Media Player ################# -->
         <activity
@@ -130,7 +127,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
            >
-        </activity>
+        </activity>
         -->
         <activity
             android:name=".push.CustomActivity"

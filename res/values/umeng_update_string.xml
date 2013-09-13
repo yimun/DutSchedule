@@ -4,6 +4,7 @@
 	<string name="UMBreak_Network">Please make sure you are connected to internet,update failed</string>
 	<string name="UMUpdateTitle">New version found</string>
 	<string name="UMNewVersion">Latest version: </string>
+	<string name="UMUpdateContent">Update Content</string>
 	<string name="UMUpdateSize">Update size: </string>
 	<string name="UMTargetSize">Target size: </string>
 	<string name="UMGprsCondition">(Warning: Not WIFI Condition)</string>

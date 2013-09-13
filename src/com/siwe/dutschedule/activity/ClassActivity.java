@@ -6,27 +6,26 @@ package com.siwe.dutschedule.activity;
  * @version 2013/3/10
  * 课程主界面
  */
-import java.util.Calendar;
-import java.util.Date;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
@@ -39,13 +38,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.siwe.dutschedule.R;
+import com.siwe.dutschedule.infoGeter.SubjectGeter;
 import com.siwe.dutschedule.setting_edit.ClearAll;
-import com.siwe.dutschedule.setting_edit.SetBackgroundImage;
 import com.umeng.analytics.MobclickAgent;
 
 public class ClassActivity extends Activity {
@@ -55,50 +54,42 @@ public class ClassActivity extends Activity {
 	private MySQLiteOpenHelper myOpenHelper;
 	private int offset = 0; // 偏移量
 	private int currIndex = 1; // 当前游标位置
-	int dayOfWeek, tmpday = 4;
+	private int dayOfWeek, tmpday = 4;
 	private int bmpW;
-	GestureDetector detector;
+	private String param;
+	private GestureDetector detector;
 	myGestureListener gesTouch = new myGestureListener();
-	RelativeLayout cla1, cla2, cla3, cla4, cla5;
 	private Button top_t1, top_t2, top_t3, top_t4, top_t5, top_t6, top_t7,
 			temp;
 	private TextView tv11, tv12, tv21, tv22, tv31, tv32, tv41, tv42, tv51,
 			tv52, calctext;
-	// tv1,tv2,tv3,tv4,tv6,tv8,tv9,tv10,
-	// ###抽屉效果
-	// 抽屉效果
-	// ##
 	private MyViewGroup myViewGroup;
 	private LayoutInflater layoutInflater;
 	private View menu_view, content_view;
 	private int window_windth;// 按钮宽度
 	private ListView lv_menu;
+	private ProgressBar probar;
 	private boolean hasMeasured = false;
-	private static int distance;// 滑动距离
-
-	private ClearAll clearAll = new ClearAll();
+	private static int distance; // 滑动距离
 	static int week;
-
-	private String title[] = { "编辑课表", "清除缓存", "返回" };
+	private String title[] = { "重新导入", "清除缓存", "返回" };
 	private ViewTreeObserver viewTreeObserver;
+	private Button[] bt_cla = new Button[5];
+	int[] claId = { R.id.cla1, R.id.cla2, R.id.cla3, R.id.cla4, R.id.cla5 };
 
-	// ###################################
-
-	@SuppressWarnings("deprecation")
 	public void onCreate(Bundle savedInstanceState) {
 		System.out.println("调用onCreate方法");
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// 创建手势检测器
 		setContentView(R.layout.groupmain);
-		menuInitView();
-		ScrollView jin = (ScrollView) content_view
-				.findViewById(R.id.scrollView1);
-		jin.setOnTouchListener(this.gesTouch);
-		detector = new GestureDetector(this,this.gesTouch);
-		this.InitTextView();
+		InitMenu();
+		InitDetailShow();
+		InitTextView();
 		InitImageView();
-
+		detector = new GestureDetector(this, this.gesTouch);
+		dayOfWeek = TimeUtils.getDayOfWeek();
+		this.insertView(currIndex, dayOfWeek);
 	}
 
 	/***
@@ -110,6 +101,7 @@ public class ClassActivity extends Activity {
 
 	private void InitImageView() {
 		cursor = (ImageView) content_view.findViewById(R.id.cursor);
+		probar = (ProgressBar) content_view.findViewById(R.id.progressBar1);
 		bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.cursor)
 				.getWidth();
 		DisplayMetrics dm = new DisplayMetrics();
@@ -129,6 +121,17 @@ public class ClassActivity extends Activity {
 	 * @return
 	 */
 	private void InitTextView() {
+
+		tv11 = (TextView) content_view.findViewById(R.id.tv11);
+		tv12 = (TextView) content_view.findViewById(R.id.tv12);
+		tv21 = (TextView) content_view.findViewById(R.id.tv21);
+		tv22 = (TextView) content_view.findViewById(R.id.tv22);
+		tv31 = (TextView) content_view.findViewById(R.id.tv31);
+		tv32 = (TextView) content_view.findViewById(R.id.tv32);
+		tv41 = (TextView) content_view.findViewById(R.id.tv41);
+		tv42 = (TextView) content_view.findViewById(R.id.tv42);
+		tv51 = (TextView) content_view.findViewById(R.id.tv51);
+		tv52 = (TextView) content_view.findViewById(R.id.tv52);
 
 		int Ids[] = new int[] { R.id.text1, R.id.text2, R.id.text3, R.id.text4,
 				R.id.text5, R.id.text6, R.id.text7 };
@@ -155,7 +158,7 @@ public class ClassActivity extends Activity {
 		});
 
 		calctext = (TextView) findViewById(R.id.calctext);
-		week = getweek();
+		week = TimeUtils.getweek();
 		if (week == 0) {
 			calctext.setText("假期");
 		} else {
@@ -189,16 +192,6 @@ public class ClassActivity extends Activity {
 	 * @return
 	 */
 	public void insertView(int current, int gotoDay) {
-		tv11 = (TextView) content_view.findViewById(R.id.tv11);
-		tv12 = (TextView) content_view.findViewById(R.id.tv12);
-		tv21 = (TextView) content_view.findViewById(R.id.tv21);
-		tv22 = (TextView) content_view.findViewById(R.id.tv22);
-		tv31 = (TextView) content_view.findViewById(R.id.tv31);
-		tv32 = (TextView) content_view.findViewById(R.id.tv32);
-		tv41 = (TextView) content_view.findViewById(R.id.tv41);
-		tv42 = (TextView) content_view.findViewById(R.id.tv42);
-		tv51 = (TextView) content_view.findViewById(R.id.tv51);
-		tv52 = (TextView) content_view.findViewById(R.id.tv52);
 
 		System.out.println("调用insertView方法");
 		myOpenHelper = new MySQLiteOpenHelper(this);
@@ -225,14 +218,12 @@ public class ClassActivity extends Activity {
 		Animation animation = null;
 		animation = new TranslateAnimation(one * (current - 1), one
 				* (gotoDay - 1), 0, 0);
-		// current = tmpdayOfWeek;
 		animation.setFillAfter(true);
 		animation.setDuration(300);
 		cursor.startAnimation(animation);
 		System.out.println("insertView:" + current + "——>" + gotoDay);
-		// return current;
-
 		mysql.close();
+		currIndex = gotoDay;
 
 	}
 
@@ -248,16 +239,7 @@ public class ClassActivity extends Activity {
 
 		System.out.println("调用ClassActivity的onResume方法");
 		super.onResume();
-		// SetBackgroundImage.setTheme(this, null,null);
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date(System.currentTimeMillis()));
-		dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - 1;
-		dayOfWeek = dayOfWeek < 1 || dayOfWeek > 6 ? 7 : dayOfWeek;
-		System.out.println("dayOfWeekInClassActivity=" + dayOfWeek);
-		// currIndex = dayOfWeek;
-		this.insertView(currIndex, dayOfWeek);
-		currIndex = dayOfWeek;
-		MyViewGroup.isMenuOpned = false; // BUG防止菜单打开后未关闭，跳转界面回来后导致界面移动方向相反
+		insertView(currIndex, currIndex);
 		MobclickAgent.onResume(this);
 	}
 
@@ -280,11 +262,10 @@ public class ClassActivity extends Activity {
 	 * 
 	 * @param
 	 */
-	public class myGestureListener implements OnGestureListener,
-			OnTouchListener {
+	public class myGestureListener extends SimpleOnGestureListener {
 
 		// 定义手势动作两点之间的最小距离
-		final int FLIP_DISTANCE = 100;
+		final int FLIP_DISTANCE = 120;
 
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
@@ -309,53 +290,32 @@ public class ClassActivity extends Activity {
 				currIndex = (currIndex == 0 ? 7 : currIndex);
 				System.out.println("currIndex=" + currIndex);
 				return true;
-			} else
-				return false;
-		}
-
-		@Override
-		public boolean onDown(MotionEvent e) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public void onLongPress(MotionEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public boolean onScroll(MotionEvent e1, MotionEvent e2,
-				float distanceX, float distanceY) {
-			// TODO Auto-generated method stub
+			}
 
 			return false;
-		}
-
-		@Override
-		public void onShowPress(MotionEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public boolean onSingleTapUp(MotionEvent e) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public boolean onTouch(View v, MotionEvent event) {
-			// TODO Auto-generated method stub
-			return detector.onTouchEvent(event);
 		}
 
 	}
 
 	@Override
-	public boolean onTouchEvent(MotionEvent ev) {
-		return detector.onTouchEvent(ev);
+	public boolean dispatchTouchEvent(MotionEvent event) {
+		if (MyViewGroup.isMenuOpned && (event.getX() >= distance)) {// 左侧菜单打开并且触摸右半部分时关闭菜单
+			myViewGroup.closeMenu();
+			return false;
+		}
+		detector.onTouchEvent(event);
+		/*
+		 * if(event.getAction()==MotionEvent.ACTION_UP) isFling = false;
+		 */
+		super.dispatchTouchEvent(event);
+		return true;
+
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		super.onTouchEvent(event);
+		return this.detector.onTouchEvent(event);
 	}
 
 	/***
@@ -364,12 +324,13 @@ public class ClassActivity extends Activity {
 	 * @param
 	 * 
 	 */
-	void menuInitView() {
-		// System.out.println("调用menuInitView方法");
+	private void InitMenu() {
+
+		// System.out.println("调用InitMenu方法");
 		myViewGroup = (MyViewGroup) this.findViewById(R.id.vg_main);
 		layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		menu_view = layoutInflater.inflate(R.layout.menu, null);
-		content_view = layoutInflater.inflate(R.layout.activity_main, null);
+		menu_view = layoutInflater.inflate(R.layout.slide_menu, null);
+		content_view = layoutInflater.inflate(R.layout.activity_class, null);
 		myViewGroup.addView(menu_view);
 		myViewGroup.addView(content_view);
 		lv_menu = (ListView) menu_view.findViewById(R.id.lv_menu);
@@ -378,16 +339,6 @@ public class ClassActivity extends Activity {
 				R.id.tv_item, title));
 		setListViewHeightBaseOnChildren(lv_menu);
 		getMAX_WIDTH();
-
-		content_view.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (myViewGroup.getScrollX() <= -distance) {
-					myViewGroup.closeMenu();
-				}
-			}
-		});
 
 		// 菜单被点击时触发的方法
 
@@ -409,10 +360,14 @@ public class ClassActivity extends Activity {
 
 				myViewGroup.closeMenu();
 				switch (position) {
-				case 0: // 编辑课表
-					startActivity(new Intent(ClassActivity.this,
-							ClassEdit.class));
+				case 0: // 重新导入
+					GetClassTask task = new GetClassTask();
+					task.execute((Void) null);
 					break;
+				/*
+				 * case 1: // 编辑课表 startActivity(new Intent(ClassActivity.this,
+				 * ClassEdit.class)); break;
+				 */
 				case 1: // 清除缓存
 
 					new AlertDialog.Builder(ClassActivity.this)
@@ -430,7 +385,7 @@ public class ClassActivity extends Activity {
 													ClassActivity.this);
 											mysql = myOpenHelper
 													.getReadableDatabase();
-											clearAll.clear(mysql);
+											ClearAll.clear(mysql);
 
 											new AlertDialog.Builder(
 													ClassActivity.this)
@@ -477,15 +432,17 @@ public class ClassActivity extends Activity {
 
 	}
 
+	/**
+	 * 重写返回键和菜单键的功能
+	 * 
+	 */
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			// if (event.getRepeatCount() == 0 && MyViewGroup.isMenuOpned) {
 			if (MyViewGroup.isMenuOpned) {
 				myViewGroup.closeMenu();
 				return true;
 			} else {
 				ClassActivity.this.finish();
-				// return false;
 			}
 		}
 
@@ -508,7 +465,6 @@ public class ClassActivity extends Activity {
 		viewTreeObserver = menu_view.getViewTreeObserver();
 		viewTreeObserver.addOnPreDrawListener(new OnPreDrawListener() {
 
-			@SuppressWarnings("deprecation")
 			@Override
 			public boolean onPreDraw() {
 				if (!hasMeasured) {
@@ -531,14 +487,6 @@ public class ClassActivity extends Activity {
 
 	}
 
-	/*
-	 * public void onClick(View v) { if (v == iv_button) { if
-	 * (myViewGroup.isMenuOpned) myViewGroup.closeMenu(); else
-	 * myViewGroup.showMenu(); }
-	 * 
-	 * }
-	 */
-
 	/***
 	 * 动态设置listview的高度 注：在listview和scrollview冲突的时候我们可以用下面这个方法动态设置listview的高度，
 	 * 但是在这里不行，原因不明确，但是还有一个办法就是把listview设置和屏幕一样的高度，
@@ -546,7 +494,7 @@ public class ClassActivity extends Activity {
 	 * 
 	 * @param listView
 	 */
-	@SuppressWarnings("deprecation")
+
 	public void setListViewHeightBaseOnChildren(ListView listView) {
 		ViewGroup.LayoutParams layoutParams = listView.getLayoutParams();
 		layoutParams.height = getWindowManager().getDefaultDisplay()
@@ -554,46 +502,76 @@ public class ClassActivity extends Activity {
 		listView.setLayoutParams(layoutParams);
 	}
 
-	public class detailListener implements View.OnLongClickListener {
-		@Override
-		public boolean onLongClick(View v) {
-			// TODO Auto-generated method stub
-			int temp = v.getId();
-			int no = temp == R.id.cla1 ? 1 : v.getId() == R.id.cla2 ? 3 : v
-					.getId() == R.id.cla3 ? 5 : v.getId() == R.id.cla4 ? 7 : 9;
-			Intent in = new Intent(ClassActivity.this, DetailActivity.class);
-			in.putExtra("no", no);
-			in.putExtra("day", currIndex);
-			startActivity(in);
-			return true;
+	public void InitDetailShow() {
+
+		class detailListener implements View.OnLongClickListener {
+			@Override
+			public boolean onLongClick(View v) {
+				// TODO Auto-generated method stub
+				System.out.println("detailListener触发");
+				int temp = v.getId();
+				int no = temp == R.id.cla1 ? 1 : v.getId() == R.id.cla2 ? 3 : v
+						.getId() == R.id.cla3 ? 5 : v.getId() == R.id.cla4 ? 7
+						: 9;
+				Intent in = new Intent(ClassActivity.this, DetailActivity.class);
+				in.putExtra("no", no);
+				in.putExtra("day", currIndex);
+				startActivity(in);
+				return true;
+
+			}
+
 		}
 
+		for (int i = 0; i < 5; i++) {
+			bt_cla[i] = (Button) content_view.findViewById(claId[i]);
+			bt_cla[i].setOnLongClickListener(new detailListener());
+		}
 	}
 
-	/***
-	 * 计算当前的周数
+	/**
 	 * 
-	 * @param
-	 * @return int day
+	 * @author linwei 后台刷新课表任务
+	 * 
 	 */
-	public static int getweek() {
-
-		// 获取当前天数
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date(System.currentTimeMillis()));
-		int currentDayOfYear = c.get(Calendar.DAY_OF_YEAR);
-		System.out.println("xianzai" + currentDayOfYear);
-
-		int distanceday = 0;
-		if (currentDayOfYear > 56 && currentDayOfYear < 244) {
-			distanceday = currentDayOfYear - 56;
-		} else if (currentDayOfYear > 244) {
-			distanceday = currentDayOfYear - 244;
-		} else {
-			return 0;
+	public class GetClassTask extends AsyncTask<Void, Void, Boolean> {
+		@Override
+		protected void onPreExecute() {
+			SharedPreferences sharedPrefrences = getSharedPreferences("user",
+					MODE_PRIVATE);
+			param = sharedPrefrences.getString("usernamepassword",
+					"zjh=201281084&mm=755213");
+			System.out.println("param=" + param);
+			probar.setVisibility(View.VISIBLE);
 		}
-		int week = distanceday / 7 + 1;
-		return week;
+
+		@Override
+		protected Boolean doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			Looper.prepare();
+			return new SubjectGeter(ClassActivity.this, param).getTwoPageInfo();
+
+		}
+
+		@Override
+		public void onCancelled() {
+			super.onCancelled();
+		}
+
+		public void onPostExecute(Boolean success) {
+
+			probar.setVisibility(View.GONE);
+			if (success) {
+				Toast.makeText(ClassActivity.this, "刷新成功", Toast.LENGTH_SHORT)
+						.show();
+				insertView(currIndex, dayOfWeek);
+			} else {
+				Toast.makeText(ClassActivity.this, "刷新失败", Toast.LENGTH_SHORT)
+						.show();
+			}
+
+		}
+
 	}
 
 }

@@ -7,5 +7,7 @@
     <color name="white">#ffffffff</color>
     <color name="blue">#ff75a6ff</color>
     <color name="translucence">#ff4e4752</color>
+    <color name="splashred">#e84c3d</color>
+    <color name="widgeblue">#333333</color>
 
 </resources>

@@ -26,8 +26,8 @@ public class SubjectGeter extends InfoGeter {
 		super(cont);
 		this.param = par;
 		// TODO Auto-generated constructor stub
-		FirstUrl = "http://202.118.65.21:8081/loginAction.do?" + param;
-		SecondUrl = "http://202.118.65.21:8081/xkAction.do?actionType=6&oper";
+		FirstUrl = "http://202.118.65.21:8080/loginAction.do?" + param;
+		SecondUrl = "http://202.118.65.21:8080/xkAction.do?actionType=6&oper";
 	}
 
 	@Override

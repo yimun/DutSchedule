@@ -10,7 +10,7 @@ import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
 
-public class InfoGeter {
+public abstract class InfoGeter {
 
 	protected String FirstUrl;
 	protected String SecondUrl;
@@ -85,15 +85,7 @@ public class InfoGeter {
 		return false;
 	}
 
-	/**
-	 * 网页字符串的格式化方法
-	 * @param origStr
-	 * @return 
-	 */
-	public String format(String origStr) {
-		
-		return origStr;
-	}
+	
 	
 	/**
 	 * 是否登录成功
@@ -114,9 +106,15 @@ public class InfoGeter {
 	 * 对获取字符串进行处理
 	 * @param str
 	 */
-	public void dealStr(String str){
-		
-	}
+	public abstract void dealStr(String str);
+	
+	
+	/**
+	 * 网页字符串的格式化方法
+	 * @param origStr
+	 * @return 
+	 */
+	public abstract String format(String origStr);
 
 
 	

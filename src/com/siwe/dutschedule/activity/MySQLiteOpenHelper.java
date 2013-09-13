@@ -69,7 +69,6 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 			// 首次创建时赋值
 			for (int i = 1; i < 8; i++)
 				for (int j = 1; j < 10; j += 2) {
-					// db.execSQL("INSERT INTO "+TABLE_NAME+" VALUES("+i+","+j+","+i+","+j+");");
 					db.execSQL("insert into " + TABLE_NAME + " VALUES(" + i
 							+ "," + j + ",'无','无','无','无','无','无','无');");
 

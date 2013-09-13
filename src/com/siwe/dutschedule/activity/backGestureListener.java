@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 
 public class backGestureListener implements OnGestureListener {
 
-	final int FLIP_DISTANCE = 120;
-	Context context;
+	private final int FLIP_DISTANCE = 120;
+	private Context context;
 
 	public backGestureListener(Context cont) {
 		this.context = cont;
@@ -27,7 +27,6 @@ public class backGestureListener implements OnGestureListener {
 			return false;
 	}
 
-	
 	@Override
 	public boolean onDown(MotionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -37,7 +36,7 @@ public class backGestureListener implements OnGestureListener {
 	@Override
 	public void onLongPress(MotionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -50,7 +49,7 @@ public class backGestureListener implements OnGestureListener {
 	@Override
 	public void onShowPress(MotionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

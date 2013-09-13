@@ -14,6 +14,7 @@ public class AboutActivity extends Activity {
 	
 	//定义手势检测器实例  
     GestureDetector detector;
+    //eclipse修改测试
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -7,9 +7,6 @@ package com.siwe.dutschedule.widgetProvider;
  */ 
 
 
-import java.util.Calendar;
-import java.util.Date;
-
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -22,6 +19,7 @@ import android.widget.Toast;
 
 import com.siwe.dutschedule.R;
 import com.siwe.dutschedule.activity.MainActivity;
+import com.siwe.dutschedule.activity.TimeUtils;
 
 public class ScheduleAppWidgetProvider extends AppWidgetProvider {
 	private static final String UPDATE_ACTION = "android.appwidget.action.APPWIDGET_UPDATE";
@@ -41,10 +39,7 @@ public class ScheduleAppWidgetProvider extends AppWidgetProvider {
 		String[] name = a[0].split("&");
 		//		String[] weeks = a[2].split("&");
 		String[] address = a[3].split("&");
-		Calendar c = Calendar.getInstance();
-		c.setTime(new Date(System.currentTimeMillis()));
-		int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - 1;
-		dayOfWeek = dayOfWeek < 1 || dayOfWeek > 6 ? 7 : dayOfWeek;
+		int dayOfWeek = TimeUtils.getDayOfWeek();
 		String week = dayOfWeek==1?"周一":dayOfWeek==2?"周二":dayOfWeek==3?"周三":dayOfWeek==4?"周四":dayOfWeek==5?"周五":dayOfWeek==6?"周六":"周日";
 
 

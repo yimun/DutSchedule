@@ -13,8 +13,8 @@ public class KaoGeter extends InfoGeter{
 	public KaoGeter(Context cont,String par) {
 		super(cont);
 		// TODO Auto-generated constructor stub
-		FirstUrl = "http://202.118.65.21:8081/loginAction.do?" + par;
-		SecondUrl = "http://202.118.65.21:8081/ksApCxAction.do?oper=getKsapXx";
+		FirstUrl = "http://202.118.65.21:8080/loginAction.do?" + par;
+		SecondUrl = "http://202.118.65.21:8080/ksApCxAction.do?oper=getKsapXx";
 	}
 	
 	@Override

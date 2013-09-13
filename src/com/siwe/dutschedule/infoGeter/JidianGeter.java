@@ -21,8 +21,8 @@ public class JidianGeter extends InfoGeter{
 	public JidianGeter(Context cont,String par) {
 		super(cont);
 		// TODO Auto-generated constructor stub
-		FirstUrl = "http://202.118.65.21:8081/loginAction.do?"+par;
-		SecondUrl = "http://202.118.65.21:8081/gradeLnAllAction.do?type=ln&oper=qbinfo";
+		FirstUrl = "http://202.118.65.21:8080/loginAction.do?"+par;
+		SecondUrl = "http://202.118.65.21:8080/gradeLnAllAction.do?type=ln&oper=qbinfo";
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class JidianGeter extends InfoGeter{
 	
 	@Override
 	public String format(String get) {
-		get = Regular.eregi_replace("(\\s)*", "", get);     //正则算法
+		get = Regular.eregi_replace("(\\s)*", "", get);     //正则算法	
 		get = Regular.eregi_replace("(<trclass)(.)*?(>)","&&", get);				
 		get = Regular.eregi_replace("(<)(.)*?(>)","/", get);
 		get = Regular.eregi_replace("&nbsp;","/", get);
