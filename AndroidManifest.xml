@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.siwe.dutschedule"
     android:installLocation="preferExternal"
-    android:versionCode="8"
+    android:versionCode="9"
     android:versionName="2.2.1" >
  <!-- 使其能够在拓展存储上安装应用 -->
 
