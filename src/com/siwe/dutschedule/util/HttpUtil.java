@@ -41,7 +41,7 @@ public class HttpUtil {
 			return HttpUtil.WIFI_INT;
 		}
 		// check use wap
-		APN_URI = Uri.parse("content://telephony/carriers/preferapn");
+		/*APN_URI = Uri.parse("content://telephony/carriers/preferapn");
 		Cursor uriCursor = ctx.getContentResolver().query(APN_URI, null, null, null, null);
 		if (uriCursor != null && uriCursor.moveToFirst()) {
 			String proxy = uriCursor.getString(uriCursor.getColumnIndex("proxy"));
@@ -51,7 +51,7 @@ public class HttpUtil {
 				(proxy.equals("10.0.0.172") || proxy.equals("010.000.000.172"))) {
 				return HttpUtil.WAP_INT;
 			}
-		}
+		}*/
 		return HttpUtil.NET_INT;
 	}
 	

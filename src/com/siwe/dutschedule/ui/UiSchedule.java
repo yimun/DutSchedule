@@ -122,6 +122,7 @@ public class UiSchedule extends BaseUi {
 				((ScheduleSqlite) sqlite).updateAll(datalist);
 
 				this.refreshViewPager(currentWeek);
+				tempWeek = currentWeek;
 				updateWidget();
 			} catch (Exception e) {
 				e.printStackTrace();

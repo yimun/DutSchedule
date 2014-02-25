@@ -81,12 +81,12 @@ public class AppClient {
 	public String get () throws Exception {
 		try {
 			HttpGet httpGet = headerFilter(new HttpGet(this.apiUrl));
-			Log.w("AppClient.get.url", this.apiUrl);
+			debugMsg("AppClient.get.url", this.apiUrl);
 			// send get request
 			HttpResponse httpResponse = httpClient.execute(httpGet);
 			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				String httpResult = resultFilter(httpResponse.getEntity());
-				Log.w("AppClient.get.result", httpResult);
+				debugMsg("AppClient.get.result", httpResult);
 				return httpResult;
 			} else {
 				return null;
@@ -115,13 +115,13 @@ public class AppClient {
 			} else {
 				httpPost.setEntity(new UrlEncodedFormEntity(postParams));
 			}
-			Log.w("AppClient.post.url", this.apiUrl);
-			Log.w("AppClient.post.data", postParams.toString());
+			debugMsg("AppClient.post.url", this.apiUrl);
+			debugMsg("AppClient.post.data", postParams.toString());
 			// send post request
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				String httpResult = resultFilter(httpResponse.getEntity());
-				Log.w("AppClient.post.result", httpResult);
+				debugMsg("AppClient.post.result", httpResult);
 				return httpResult;
 			} else {
 				return null;
@@ -171,5 +171,10 @@ public class AppClient {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	void debugMsg(String tag,String mess) {
+		if(C.DEBUG_MODE)
+			Log.w(tag, mess);
 	}
 }

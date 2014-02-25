@@ -2,6 +2,7 @@ package com.siwe.dutschedule.base;
 
 import android.util.Log;
 
+
 public class BaseTask {
 
 	public static final int TASK_COMPLETE = 0;
@@ -34,23 +35,28 @@ public class BaseTask {
 	}
 	
 	public void onStart () {
-		Log.w("BaseTask", "onStart");
+		debugMsg("onStart");
 	}
 	
 	public void onComplete () {
-		Log.w("BaseTask", "onComplete");
+		debugMsg("onComplete");
 	}
 	
 	public void onComplete (String httpResult) {
-		Log.w("BaseTask", "onComplete"+httpResult);
+		debugMsg("onComplete"+httpResult);
 	}
 	
 	public void onError (String error) {
-		Log.w("BaseTask", "onError");
+		debugMsg("onError");
 	}
 	
 	public void onStop () throws Exception {
-		Log.w("BaseTask", "onStop");
+		debugMsg("onStop");
+	}
+	
+	void debugMsg(String msg){
+		if(C.DEBUG_MODE)
+			Log.w("BaseTask",msg);
 	}
 	
 }
