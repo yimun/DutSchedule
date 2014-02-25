@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/comm_list_item_selector_light" >
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp" >
+
+        <TextView
+            android:id="@+id/chatname"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginLeft="5dp"
+            android:text="张林伟"
+            android:textColor="@drawable/chat_item_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/chatcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/chat_item_from"
+            android:gravity="center_vertical"
+            android:maxWidth="220dp"
+            android:minHeight="22dp"
+            android:text="策划issdfasdfa"
+            android:textColor="@color/text"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+    
+     <TextView
+         android:id="@+id/chattime"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@id/linear"
+         android:layout_marginLeft="5dp"
+         android:text="2012 10 21"
+         android:textColor="@color/menu2"
+         android:textSize="12sp" />
+
+</RelativeLayout>

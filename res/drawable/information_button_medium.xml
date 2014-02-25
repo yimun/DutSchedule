@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"><shape>
+            <solid android:color="@color/global_gray" />
+
+            <!-- 形状的填充色 -->
+            <padding android:left="10dip" />
+
+            <stroke android:width="0.2dp" android:color="@color/global_gray" />
+            <!-- 边框宽度和颜色 -->
+
+        </shape></item>
+    <item><shape>
+            <solid android:color="@color/body2" />
+
+            <!-- 形状的填充色 -->
+            <padding android:left="10dip" />
+
+            <stroke android:width="0.2dp" android:color="@color/global_gray" />
+            <!-- 边框宽度和颜色 -->
+
+        </shape></item>
+
+</selector>

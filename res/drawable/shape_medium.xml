@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+ 
+	<solid android:color="#f1f1f1"/>
+    
+    <!-- 形状的填充色 -->
+    <padding android:left="10dip"/>
+ 	
+    <stroke
+        android:width="0.2dp"
+        android:color="#CDCDB4" 
+        /> 
+    <!-- 边框宽度和颜色 -->
+
+</shape>

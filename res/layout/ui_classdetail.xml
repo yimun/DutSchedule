@@ -1,0 +1,240 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/global_titlebar"/>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/menu1" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/detail1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/TextView10"
+                    android:background="@drawable/base_edittext_drawable"
+                    android:text="无"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/TextView10"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/detail1"
+                    android:layout_alignBottom="@+id/detail1"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="课名："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/text"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/detail3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/TextView06"
+                    android:background="@drawable/base_edittext_drawable"
+                    android:text="无"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/TextView06"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/detail3"
+                    android:layout_alignBottom="@+id/detail3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="上课周次："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/text"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/detail4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/TextView04"
+                    android:background="@drawable/base_edittext_drawable"
+                    android:text="无"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/TextView04"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/detail4"
+                    android:layout_alignBottom="@+id/detail4"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="地点："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/text"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/detail5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/TextView02"
+                    android:background="@drawable/base_edittext_drawable"
+                    android:text="无"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/detail5"
+                    android:layout_alignBottom="@+id/detail5"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="学分："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/text"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/detail6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/TextViewz"
+                    android:background="@drawable/base_edittext_drawable"
+                    android:text="无"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/TextViewz"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/detail6"
+                    android:layout_alignBottom="@+id/detail6"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="修读类型："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/text"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/detail7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/TextViewz"
+                    android:background="@drawable/base_edittext_drawable"
+                    android:text="无"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/TextViewz"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/detail7"
+                    android:layout_alignBottom="@+id/detail7"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="教师："
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/text"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bt_login"
+                android:text="保存修改"
+                android:textColor="@color/center_menu_back" />
+
+            <Button
+                android:id="@+id/focus"
+                android:layout_width="fill_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bt_login"
+                android:text="进入课程论坛"
+                android:textColor="@color/center_menu_back"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

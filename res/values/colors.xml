@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="bg">#f1e3e4</color>
+	<color name="red">#FF0000</color>
+	<color name="gray">#FFFFEE</color>
+	<color name="black">#000000</color>
+	<color name="white">#FFFFFF</color>
+	
+	<color name="text">#333333</color>
+	<color name="body1">#FFFFFF</color>
+	<color name="body2">#F9F9F9</color>
+	<color name="menu1">#EEEEEE</color>
+	<color name="menu2">#BBBBBB</color>
+	<color name="divider1">#DDDDDD</color>
+	<color name="divider2">#EEEEEE</color>
+	<color name="divider3">#FFFFFF</color>
+	<color name="loading">#99000000</color>
+	
+    <color name="pull_refresh_textview">#000000</color>
+    <color name="gold">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="action_back">#336666</color>
+    <color name="action_menu_pressed" >#333333</color>
+    <color name="global_gray">#dddddd</color>
+    <color name="semitransparent">#4d000000</color>
+    <color name="wechat_green">#ff45c01a</color>
+    <color name="menu_devider_color">#ff282a2b</color>
+    <color name="menu_pressed_color">@color/menu_devider_color</color>
+    <color name="holo_blue_light">#ff33b5e5</color>
+    <color name="center_menu_back">#292929</color>
+    <color name="none">#00000000</color>
+    <color name="guide_back">#FFFFFF</color>
+     <color name="widgeblue">#333333</color>
+</resources>

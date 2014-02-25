@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:alpha="100" >
+
+            <Button
+                android:id="@+id/cla1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bt_class1" />
+
+            <TextView
+                android:id="@+id/cla1_name"
+                android:layout_width="200dp"
+                android:layout_height="26dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:text="无"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/cla1_teach_posi"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/cla1_name"
+                android:layout_below="@+id/cla1_name"
+                android:layout_marginTop="0dp"
+                android:text="地点:无\n上课周:无"
+                android:textColor="#696969" />
+
+            <TextView
+                android:id="@+id/TextViewz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="25dp"
+                android:text="第一大节"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+            <Button
+                android:id="@+id/cla2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bt_class2" />
+
+            <TextView
+                android:id="@+id/cla2_teach_posi"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/cla2_name"
+                android:layout_below="@+id/cla2_name"
+                android:text="地点:无\n上课周:无"
+                android:textColor="#696969" />
+
+            <TextView
+                android:id="@+id/cla2_name"
+                android:layout_width="200dp"
+                android:layout_height="26dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:text="无"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/TextViewz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="25dp"
+                android:text="第二大节"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+            <Button
+                android:id="@+id/cla3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bt_class3" />
+
+            <TextView
+                android:id="@+id/cla3_teach_posi"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/cla3_name"
+                android:layout_below="@+id/cla3_name"
+                android:text="地点:无\n上课周:无"
+                android:textColor="#696969" />
+
+            <TextView
+                android:id="@+id/cla3_name"
+                android:layout_width="200dp"
+                android:layout_height="26dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:text="无"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/TextViewz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="25dp"
+                android:text="第三大节"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+            <Button
+                android:id="@+id/cla4"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bt_class4" />
+
+            <TextView
+                android:id="@+id/cla4_name"
+                android:layout_width="200dp"
+                android:layout_height="26dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:text="无"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/cla4_teach_posi"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/cla4_name"
+                android:text="地点:无\n上课周:无"
+                android:textColor="#696969" />
+
+            <TextView
+                android:id="@+id/TextViewz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="25dp"
+                android:text="第四大节"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+            <Button
+                android:id="@+id/cla5"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bt_class5" />
+
+            <TextView
+                android:id="@+id/cla5_teach_posi"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/cla5_name"
+                android:text="地点:无\n上课周:无"
+                android:textColor="#696969" />
+
+            <TextView
+                android:id="@+id/cla5_name"
+                android:layout_width="200dp"
+                android:layout_height="26dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:text="无"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/TextViewz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="25dp"
+                android:text="第五大节"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/body2"
+    android:orientation="vertical" >
+    
+     <ListView
+         android:id="@+id/bbslistview"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="10dp"
+         android:cacheColorHint="#00000000"
+         android:divider="@color/global_gray"
+         android:dividerHeight="0.2px"
+         android:listSelector="@null" />
+
+</LinearLayout>

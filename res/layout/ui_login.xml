@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/global_titlebar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg3" >
+
+        <AutoCompleteTextView
+            android:id="@+id/autotv_account"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/base_edittext_drawable"
+            android:drawableLeft="@drawable/user"
+            android:ems="10"
+            android:hint="学号" >
+
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/autotv_account"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/base_edittext_drawable"
+            android:drawableLeft="@drawable/password"
+            android:ems="10"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/scorethis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:shadowColor="#000000"
+            android:shadowDy="1.0"
+            android:shadowRadius="1.0"
+            android:text="登陆助手才能提供服务哦！"
+            android:textColor="@color/holo_blue_light" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/et_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bt_login"
+            android:text="登 陆"
+            android:textColor="@color/holo_blue_light"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

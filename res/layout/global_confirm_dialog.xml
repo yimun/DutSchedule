@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/semitransparent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10.0dip" >
+
+    <LinearLayout
+        style="@style/ConfirmDialog"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:minWidth="200dip"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/confirm_dialog_title_tv"
+                style="@style/ConfirmDialogTitle"
+                android:text="@string/app_name"
+                android:textColor="@color/holo_blue_light" />
+
+            <ImageView
+                android:id="@+id/confirm_dialog_title_line"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/holo_blue_light" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip"
+                android:paddingRight="8.0dip" >
+
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0" >
+
+                    <TextView
+                        android:id="@+id/confirm_dialog_content_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Medium Text"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white" />
+
+                </ScrollView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/mm_alert_btn_divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:layout_marginTop="16dip"
+            android:background="@color/menu_devider_color" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minWidth="200dip"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/confirm_dialog_btn2"
+                android:layout_width="0.0dip"
+                android:layout_height="48dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/alert_btn_bg"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="16dip" />
+
+            <ImageView
+                android:id="@+id/mm_alert_btn_divider"
+                android:layout_width="1.0dip"
+                android:layout_height="fill_parent"
+                android:background="@color/menu_devider_color" />
+
+            <Button
+                android:id="@+id/confirm_dialog_btn1"
+                android:layout_width="0.0dip"
+                android:layout_height="48dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/alert_btn_bg"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="16dip"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

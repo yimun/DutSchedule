@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <RelativeLayout
+            android:id="@+id/topbar"
+            android:layout_width="fill_parent"
+            android:layout_height="47dp"
+            android:background="@color/action_back" >
+
+            <!-- android:background="@drawable/common_titlebar" -->
+
+            <Button
+                android:id="@+id/bpush_media_list_return_btn"
+                android:layout_width="60dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/actionbar_menu_selector" >
+
+            </Button>
+
+            <ImageView
+                android:id="@+id/LEFT_BUTTON"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/action_up_indicator"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/IC"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/LEFT_BUTTON"
+                android:src="@drawable/action_logo" />
+
+            <TextView
+                android:id="@+id/TITLE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/IC"
+                android:text="消息中心"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/global_gray"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/bpush_media_none_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bpush_gray_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="对不起，您暂时没有富媒体消息"
+                android:textColor="#5F5F5F"
+                android:textSize="13sp"
+                android:textStyle="bold" >
+            </TextView>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/bpush_type_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="40dp"
+            android:cacheColorHint="#00000000"
+            android:divider="@color/global_gray"
+            android:dividerHeight="0.2px"
+            android:focusableInTouchMode="true" />
+    </LinearLayout>
+
+</LinearLayout>

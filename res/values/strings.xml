@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">大工助手</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_show_list">ShowList</string>
+    <!-- 全局文字 -->
+    <string name="app_version">v 3.0</string>
+    <!-- 按钮文字 -->
+    <string name="btn_confirm">确认</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_comment">写评论</string>
+    <string name="btn_addfans">加关注</string>
+    <!-- 菜单文字 -->
+    <string name="menu_app_write">写微博</string>
+    <string name="menu_app_logout">注销账户</string>
+    <string name="menu_app_about">应用信息</string>
+    <string name="menu_demo_web">网页示例</string>
+    <string name="menu_demo_map">地图示例</string>
+    <string name="menu_demo_test">测试示例</string>
+    <!-- 配置提示 -->
+    <string name="config_sign">修改签名</string>
+    <string name="config_face">更换头像</string>
+    <!-- 提示文字 -->
+    <string name="msg_loginfail">登录失败</string>
+    <!-- 界面文字 -->
+    <string name="login_title">用户登录</string>
+    <string name="login_username">账户</string>
+    <string name="login_password">密码</string>
+    <string name="login_remember">记住密码</string>
+    <string name="login_submit">登录</string>
+    <string name="edit_submit">保存</string>
+    <string name="blog_comment">评论</string>
+    <string name="customer_fans">粉丝</string>
+    <string name="customer_blog">微博</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_guide">Guide</string>
+    <string name="title_activity_survey_center">SurveyCenter</string>
+    <string name="title_activity_user_homepage">UserHomepage</string>
+    <string name="title_activity_setting">Setting</string>
+    <string name="image_desc">图片</string>
+    <string name="ver">版本: v1.0.0</string>
+    <string name="size">大小: 13MB</string>
+    <string name="mgr">管理</string>
+    <string name="name">应用Demo</string>
+    <string name="p2refresh_release_refresh">松开刷新</string>
+    <string name="p2refresh_refresh_lasttime">最近更新&#160;&#058;&#160;</string>
+    <string name="p2refresh_head_load_more">加载更多</string>
+    <string name="p2refresh_end_load_more">更    多</string>
+    <string name="p2refresh_end_click_load_more">点击加载</string>
+    <string name="p2refresh_doing_head_refresh">正在刷新&#8230;</string>
+    <string name="p2refresh_doing_end_refresh">加载中&#8230;</string>
+    <string name="p2refresh_pull_to_refresh">下拉刷新</string>
+    <string name="title_activity_client">Client</string>
+    <string name="title_activity_contact_us">ContactUs</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_modify_information">ModifyInformation</string>
+
+</resources>

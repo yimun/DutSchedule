@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="65dp"
+    android:layout_marginRight="5dp"
+    android:background="@drawable/comm_list_item_selector_light" >
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:contentDescription="@string/image_desc"
+        android:src="@drawable/message_icon" />
+
+    <TextView
+        android:id="@+id/bbs_main_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/ivIcon"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxWidth="220dp"
+        android:text="毛泽东思想和中国特色社会主义理论体系"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text"
+        android:textSize="19sp" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/actionbar_add_icon" />
+
+</RelativeLayout>

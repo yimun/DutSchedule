@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/comm_list_item_selector_light" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp" >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/school" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/mm_submenu_normal" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/imageView2"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:maxWidth="210dp"
+        android:text="首届大连市高校移动应用开发与设计大赛"
+        android:textColor="@color/text"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="time"
+        android:textColor="@color/menu2"
+        android:textSize="13sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

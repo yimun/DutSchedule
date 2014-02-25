@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="DuplicateIds">
+        <ignore path="res/layout/ui_frag_main.xml" />
+    </issue>
+    <issue id="HandlerLeak" severity="ignore" />
+    <issue id="NewApi" severity="ignore" />
+    <issue id="ValidFragment" severity="ignore" />
+</lint>

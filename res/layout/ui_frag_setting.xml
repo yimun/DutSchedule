@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/body2"
+    android:orientation="vertical"
+    tools:context=".FragSetting" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/b_user_information"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/information_button_top"
+            android:gravity="center|left"
+            android:text="个人信息"
+            android:textSize="18sp"
+            android:drawableRight="@drawable/sub_pressed"
+            android:paddingRight="10dp"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/b_about"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/information_button_medium"
+            android:gravity="center|left"
+            android:text="关于"
+            android:textSize="18sp"
+            android:drawableRight="@drawable/sub_pressed"
+            android:paddingRight="10dp"
+            android:textColor="#000000" />
+        <Button
+            android:id="@+id/b_feedback"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/information_button_medium"
+            android:gravity="center|left"
+            android:text="反馈问题"
+            android:textSize="18sp"
+            android:drawableRight="@drawable/sub_pressed"
+            android:paddingRight="10dp"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/b_contact"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/information_button_bottom"
+            android:gravity="center|left"
+            android:text="联系我们"
+            android:textSize="18sp"
+            android:drawableRight="@drawable/sub_pressed"
+            android:paddingRight="10dp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/b_logout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bt_red"
+        android:text="退出登录"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+</LinearLayout>

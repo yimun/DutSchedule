@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/topbar"
+        android:layout_width="fill_parent"
+        android:layout_height="47dp" 
+        android:background="@color/action_back">
+
+        <!-- android:background="@drawable/common_titlebar" -->
+
+        <LinearLayout
+            android:id="@+id/LEFT_MENU"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/actionbar_menu_selector"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/LEFT_BUTTON"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:src="@drawable/action_up_indicator"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/IC"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/action_logo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/RIGHT_MENU"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal" >
+            
+            <ProgressBar
+                android:id="@+id/PROGRESS_BAR"
+                style="@style/smallCustomProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="7dp"
+                android:visibility="gone" >
+
+            </ProgressBar>
+            
+            <RelativeLayout
+                android:id="@+id/REFRESH"
+                android:layout_width="45dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/actionbar_menu_selector"
+                android:visibility="visible" >
+
+                <ImageView
+                    android:id="@+id/RIGHT_REFRESH_BUTTON"
+                    android:layout_width="22dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/action_refresh" />
+
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:id="@+id/ADD"
+                android:layout_width="45dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/actionbar_menu_selector"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="7dp"
+                    android:src="@drawable/action_add_bbs" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/MORE"
+                android:layout_width="45dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/actionbar_menu_selector"
+                android:visibility="visible" >
+
+                <ImageView
+                    android:id="@+id/RIGHT_TOW_BUTTON"
+                    android:layout_width="35dp"
+                    android:layout_height="38dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/action_more" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/MESSAGE"
+                android:layout_width="45dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/actionbar_menu_selector"
+                android:visibility="visible" >
+
+                <ImageView
+                    android:id="@+id/RIGHT_BUTTON"
+                    android:layout_width="28dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@id/RIGHT_BUTTON"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/action_message" />
+
+                <ImageView
+                    android:id="@+id/UNREAD"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignBottom="@id/RIGHT_BUTTON"
+                    android:layout_alignRight="@id/RIGHT_BUTTON"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/action_unread_dot"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/TITLE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/LEFT_MENU"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:maxLines="1"
+            android:maxWidth="200dp"
+            android:text="大工助手"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/global_gray"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/LINE"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/topbar"
+        android:scaleType="fitXY"
+        android:src="@color/global_gray"
+        android:visibility="gone" />
+
+</RelativeLayout>
