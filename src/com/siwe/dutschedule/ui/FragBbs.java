@@ -42,7 +42,7 @@ public class FragBbs extends BaseFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		listView = (ListView) mView.findViewById(R.id.bbslistview);
-		bt_add = (RelativeLayout) baseUi.findViewById(R.id.ADD);
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
@@ -72,6 +72,7 @@ public class FragBbs extends BaseFragment {
 	public void onResume() {
 		super.onResume();
 		doDBTask();
+		bt_add = (RelativeLayout) baseUi.findViewById(R.id.ADD);
 		bt_add.setVisibility(View.VISIBLE);
 		bt_add.setOnClickListener(new OnClickListener(){
 

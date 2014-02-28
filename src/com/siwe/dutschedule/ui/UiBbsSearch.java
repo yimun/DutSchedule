@@ -37,6 +37,7 @@ public class UiBbsSearch extends BaseUi {
 	private ActionBar actionBar;
 	private ArrayList<Bbs> datalist = new ArrayList<Bbs>();
 	private RelativeLayout bt_search;
+	private MyAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class UiBbsSearch extends BaseUi {
 		getWidgetId();
 		initActionBar();
 		Bundle bd  = getIntent().getExtras();
+		adapter = new MyAdapter();
+		lv.setAdapter(adapter);
 		if(bd!=null){
 			edt_search.setText(bd.getString("name"));
 			doSearchTask();
@@ -134,8 +137,8 @@ public class UiBbsSearch extends BaseUi {
 			}
 			try {
 				datalist.clear();
-				datalist = (ArrayList<Bbs>) message.getResultList("Bbs");
-				lv.setAdapter(new MyAdapter());
+				datalist.addAll((ArrayList<Bbs>) message.getResultList("Bbs"));
+				adapter.notifyDataSetChanged();
 			} catch (Exception e) {
 				e.printStackTrace();
 				toastE(C.err.server);
@@ -169,6 +172,8 @@ public class UiBbsSearch extends BaseUi {
 
 		@Override
 		public View getView(int arg0, View arg1, ViewGroup arg2) {
+			if(datalist.isEmpty())
+				return null;
 			Bbs item = datalist.get(arg0);
 			View view = getLayout(R.layout.item_list_bbssearch);
 			((TextView) view.findViewById(R.id.bbs_main_name)).setText(item.getName());

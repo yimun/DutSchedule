@@ -13,13 +13,13 @@
         android:src="@drawable/logo" />
 
     <TextView
-        android:id="@+id/scorethis"
+        android:id="@+id/appname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/IC"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="大工助手"
+        android:text="@string/app_name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#663300"
         android:textSize="30dp"
@@ -27,12 +27,12 @@
         android:typeface="sans" />
 
     <TextView
-        android:id="@+id/scoreall"
+        android:id="@+id/version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scorethis"
+        android:layout_below="@+id/appname"
         android:layout_centerHorizontal="true"
-        android:text="@string/app_version"
+        android:text="@string/version_name"
         android:textColor="#333333"
         android:textStyle="italic"
         android:typeface="sans" />

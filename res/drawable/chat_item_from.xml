@@ -4,5 +4,5 @@
     <item android:state_focused="true" android:drawable="@drawable/chat_item_from_pressed" />
     <item android:state_pressed="true" android:drawable="@drawable/chat_item_from_pressed" />
     <item android:state_selected="true" android:drawable="@drawable/chat_item_from_pressed" />
-    <item android:drawable="@drawable/chat_item_from" />
+    <item android:drawable="@drawable/chat_item_from_normal" />
 </selector>

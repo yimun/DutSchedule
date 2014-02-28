@@ -46,7 +46,7 @@ public class ScheduleAppWidgetProvider extends AppWidgetProvider {
 		String[] head = {"1~2:","3~4:","5~6:","7~8:","9~11:",};
 		for (int i = 0; i < appWidgetIds.length; i++) {
 			Intent intent = new Intent();
-
+			System.out.println("begin fo appwidget");
 			// 为Intent对象设置Action
 			intent.setAction(UPDATE_ACTION);
 			// 使用getBroadcast方法，得到一个PendingIntent对象，当该对象执行时，会发送一个广播
@@ -60,9 +60,14 @@ public class ScheduleAppWidgetProvider extends AppWidgetProvider {
 			remoteViews.setOnClickPendingIntent(R.id.widge, pendingIntent3);
 			// appWidgetManager.updateAppWidget(appWidgetId, views);
 			remoteViews.setTextViewText(R.id.textView1, "第"+tempWeek+"周\n\n"+week);
-			
-			if(list.isEmpty())
-				break;
+			for(int index=0;index<tvIds.length;index++){
+				remoteViews.setTextViewText(tvIds[index], head[index] + "无 | 无");
+			}
+			if(list.isEmpty()){
+				// BUG下面这句为刷新界面的View如果没有，操作将不会保存
+				appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);	
+				continue;
+			}
 			for (Schedule item : list) {
 				if(!judgeIsTime(item))
 					continue;

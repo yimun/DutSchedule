@@ -7,6 +7,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -14,16 +15,12 @@ import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.siwe.dutschedule.R;
-import com.siwe.dutschedule.base.BaseDialog;
 import com.siwe.dutschedule.base.BaseMessage;
 import com.siwe.dutschedule.base.BaseService;
 import com.siwe.dutschedule.base.BaseUi;
@@ -61,7 +58,6 @@ public class UiSplash extends BaseUi {
 		}
 	};
 
-	private BaseDialog dialog;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -201,7 +197,11 @@ public class UiSplash extends BaseUi {
 
 	void showUnSuccess() {
 
-		new AlertDialog.Builder(this).setCancelable(false)
+		Activity activity = this;  
+        while (activity.getParent() != null) {  
+            activity = activity.getParent();  
+        }  
+		new AlertDialog.Builder(activity).setCancelable(false)
 				.setIcon(R.drawable.ic_launcher).setTitle("大工助手")
 				.setMessage("网络连接不成功，是否重试？")
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {

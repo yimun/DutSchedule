@@ -27,6 +27,8 @@ public final class C {
 		}
 
 		public static final String initsource       = "http://yimulinwei.sinaapp.com";
+		public static final String download         = "/sources/Duthelper(video).apk";
+		
 		public static final String index			= "admin/index";
 		public static final String pagelogin		= "admin/pagelogin";
 		public static final String login		    = "admin/login";

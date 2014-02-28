@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">大工助手</string>
+    <string name="version_name">3.0.2</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_show_list">ShowList</string>

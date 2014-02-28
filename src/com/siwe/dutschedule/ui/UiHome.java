@@ -201,6 +201,7 @@ public class UiHome extends BaseUi {
 				return;
 			try {
 				listBbs.clear();
+				myAdapter.notifyDataSetChanged();
 				listBbs = (ArrayList<Bbs>) message.getResultList("Bbs");
 				if (sqlite == null)
 					sqlite = new BbsSqlite(this);

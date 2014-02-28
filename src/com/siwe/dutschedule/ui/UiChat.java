@@ -449,8 +449,8 @@ public class UiChat extends BaseUi implements OnClickListener,
 						@Override
 						public void onClick(View v) {
 							dialog.dismiss();
-							sqlite = new BbsSqlite(getContext());
-							sqlite.delete("id=?",
+							BbsSqlite bbsSqlite = new BbsSqlite(getContext());
+							bbsSqlite.delete("id=?",
 									new String[] { modelBbs.getId() });
 							toastS("成功取消关注");
 							doFinish();
