@@ -56,7 +56,7 @@ public class BaseUi extends FragmentActivity {
 
 	private void checkBaseurl() {
 		if(C.api.base == null)
-			C.api.setBase(AppUtil.getSharedPreferences(this).getString("baseUrl",
+			C.api.setBase(AppUtil.getSharedPreferences(this).getString("baseurl",
 				""));
 	}
 

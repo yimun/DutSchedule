@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.siwe.dutschedule"
-    android:installLocation="preferExternal"
-    android:versionCode="12"
-    android:versionName="3.0.2" >
+    android:versionCode="13"
+    android:versionName="3.0.2" android:installLocation="preferExternal">
 
     <uses-sdk
         android:minSdkVersion="8"

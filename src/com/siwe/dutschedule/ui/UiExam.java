@@ -107,7 +107,7 @@ public class UiExam extends BaseUi {
 		switch (taskId) {
 		case C.task.exam:
 			if (!message.isSuccess()) {
-				toastE("读取失败");
+				toastE("暂无数据");
 				return;
 			}
 			toastS("读取成功");
@@ -128,7 +128,7 @@ public class UiExam extends BaseUi {
 
 	private void initViewData() {
 		if (datalist.size() == 0) {
-			toastE(C.err.emptydata);
+			//toastE(C.err.emptydata);
 			return;
 		}
 		listView.setAdapter(new MyListAdapter());

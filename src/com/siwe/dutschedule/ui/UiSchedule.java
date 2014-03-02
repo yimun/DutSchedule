@@ -48,6 +48,7 @@ public class UiSchedule extends BaseUi {
 	private int offset = 0; // 偏移量
 	private int currIndex = 0; // 当前游标位置
 	private int today;
+	private int countFirst = 0;
 
 	// data
 	private ArrayList<Schedule> datalist = new ArrayList<Schedule>();
@@ -55,13 +56,14 @@ public class UiSchedule extends BaseUi {
 	private int currentWeek;
 	private int tempWeek;
 
+	ArrayList<String> selectWeek  = new ArrayList<String>();
 	private PopupManger popupManger;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ui_schedule);
-		tempWeek = currentWeek = TimeUtil.getWeekOfTerm();
+		tempWeek = currentWeek = TimeUtil.getWeekOfTerm(this);
 		today = TimeUtil.getDayOfWeek();
 		this.initActionBar();
 		this.initTopBtn();
@@ -225,8 +227,13 @@ public class UiSchedule extends BaseUi {
 		mPager.setAdapter(new SchedulePagerAdapter(this, scrollViews, datalist,
 				week));
 		mPager.setOnPageChangeListener(new MyChangeListener());
-		mPager.setCurrentItem(today, true);
-		scrollCursor(currIndex,today);
+		if(countFirst++ == 0){
+			mPager.setCurrentItem(today, true);
+			scrollCursor(currIndex,today);
+		}else{
+			mPager.setCurrentItem(currIndex, true);
+			scrollCursor(currIndex,currIndex);
+		}
 		
 	}
 
@@ -250,15 +257,20 @@ public class UiSchedule extends BaseUi {
 
 	private void initPopup() {
 		popupManger = new PopupManger(this);
+		selectWeek.clear();
+		int weeks = TimeUtil.getAllTermWeeks(this);
+		for(int i =1;i<=weeks;i++){
+			selectWeek.add("第"+i+"周");
+		}
 		popupManger.setAdapter(new ArrayAdapter(this,
-				R.layout.item_list_popup_menu, new String[] { "上一周", "当前周",
-						"下一周" }));
+				R.layout.item_list_popup_menu, selectWeek));
 		popupManger.setItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				popupManger.dismiss();
-				switch (position) {
+				refreshViewPager(position+1);
+				/*switch (position) {
 				case 0:
 					refreshViewPager(--tempWeek);
 					break;
@@ -269,7 +281,7 @@ public class UiSchedule extends BaseUi {
 				case 2:
 					refreshViewPager(++tempWeek);
 					break;
-				}
+				}*/
 			}
 		});
 		popupManger.initPopup();

@@ -6,12 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 public class TimeUtil {
 	
-	
-	private static final String dateBegin = "2014-2-24";
-	private static final String dateOver = "2014-8-31";
-
 	/***
 	 * 获取星期 周一为0 周日为6
 	 * 
@@ -24,33 +23,59 @@ public class TimeUtil {
 		return dayOfWeek;
 	}
 
+	
+	private static Calendar[] getTermDate(Context ctx){
+		Calendar[] cal = new Calendar[2];
+		cal[0] = Calendar.getInstance();
+		cal[1] = Calendar.getInstance();
+		
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
+		SharedPreferences sp = AppUtil.getSharedPreferences(ctx);
+		String dateBegin = sp.getString("termbegin", "2014-2-24");
+		String dateOver  = sp.getString("termover", "2014-6-22");
+		try {
+			cal[0].setTime(sf.parse(dateBegin));
+			cal[1].setTime(sf.parse(dateOver));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return cal;
+	}
 	/***
 	 * 计算当前的周数
 	 * 
 	 * @param
 	 * @return int day
 	 */
-	public static int getWeekOfTerm() {
+	public static int getWeekOfTerm(Context context) {
 
-		Calendar begin = Calendar.getInstance();
-		Calendar over = Calendar.getInstance();
+	
 		Calendar current = Calendar.getInstance();
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd",Locale.CHINA);
-
-		try {
-			begin.setTime(sf.parse(dateBegin));
-			over.setTime(sf.parse(dateOver));
-		} catch (Exception e) {
-			e.printStackTrace();
+		Calendar[] cal = getTermDate(context);
+		if(cal == null)
 			return 0;
-		}
+		
 		int currentWeek = current.get(Calendar.WEEK_OF_YEAR);
-		int beginWeek = begin.get(Calendar.WEEK_OF_YEAR);
-		int overWeek = over.get(Calendar.WEEK_OF_YEAR);
+		int beginWeek = cal[0].get(Calendar.WEEK_OF_YEAR);
+		int overWeek = cal[1].get(Calendar.WEEK_OF_YEAR);
 		if(currentWeek >= beginWeek && currentWeek <= overWeek)
 			return currentWeek - beginWeek + 1;
 		else 
 			return 0;
+	}
+	
+	/**
+	 * 获取上课总周数
+	 * @return
+	 */
+	public static int getAllTermWeeks(Context context){
+		Calendar[] cal = getTermDate(context);
+		if(cal == null)
+			return 0;
+		int beginWeek = cal[0].get(Calendar.WEEK_OF_YEAR);
+		int overWeek = cal[1].get(Calendar.WEEK_OF_YEAR);
+		return overWeek-beginWeek+1;
 	}
 
 	

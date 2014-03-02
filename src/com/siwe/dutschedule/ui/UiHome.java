@@ -115,6 +115,7 @@ public class UiHome extends BaseUi {
 	protected void onResume() {
 		super.onResume();
 		doTaskGetBbsUnread();
+		hideLoadBar();
 		initUmeng();
 		if(!BaseAuth.isLogin())
 			BaseService.start(this, AutoLoginService.class);
@@ -261,6 +262,9 @@ public class UiHome extends BaseUi {
 				doFinish();
 				break;
 			case R.id.img_user:
+				if (bidirSldingLayout.isLeftLayoutVisible()) {
+					bidirSldingLayout.scrollToContentFromLeftMenu();
+				}
 				forward(UiUserInfo.class);
 				break;
 			case R.id.s_linear_survey_center:

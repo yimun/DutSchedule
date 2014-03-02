@@ -1,11 +1,13 @@
 package com.siwe.dutschedule.ui;
 
 import java.util.Calendar;
+import java.util.Iterator;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -58,6 +60,7 @@ public class UiSplash extends BaseUi {
 		}
 	};
 
+	private boolean isActivityFocused = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -116,7 +119,7 @@ public class UiSplash extends BaseUi {
 
 	private void initJump() {
 
-		C.api.setBase(preferences.getString("baseUrl", ""));
+		C.api.setBase(preferences.getString("baseurl", ""));
 
 		isFirstIn = preferences.getBoolean("isFirst", true);
 		if (isFirstIn) {
@@ -142,9 +145,9 @@ public class UiSplash extends BaseUi {
 
 		@Override
 		protected Boolean doInBackground(Void... params) {
-			//Looper.prepare();
+			// Looper.prepare();
 			debugMemory("do task get base url");
-			HttpGet httpRequest = new HttpGet(C.api.initsource);
+			HttpGet httpRequest = new HttpGet(C.api.initsource+C.api.config);
 			try {
 				HttpResponse httpResponse = new DefaultHttpClient()
 						.execute(httpRequest);
@@ -167,10 +170,9 @@ public class UiSplash extends BaseUi {
 		}
 
 		public void onPostExecute(Boolean success) {
-			if (!success){
+			if (!success) {
 				showUnSuccess();
-			}
-			else
+			} else
 				dealResult(resultSrc);
 		}
 
@@ -178,15 +180,15 @@ public class UiSplash extends BaseUi {
 
 	void dealResult(String result) {
 		try {
-			BaseMessage message = AppUtil.getMessage(result);
-			if (!message.isSuccess()){
-				debugMemory("throw");
-				throw new Exception();
-			}
+			JSONObject jsonObject = new JSONObject(result);
 			Editor editor = preferences.edit();
+			Iterator<String> it = jsonObject.keys();
+			while (it.hasNext()) {
+				String jsonKey = it.next();
+				editor.putString(jsonKey, jsonObject.getString(jsonKey));
+			}
 			editor.putInt("lastGet",
 					Calendar.getInstance().get(Calendar.DAY_OF_YEAR));
-			editor.putString("baseUrl", message.getMessage());
 			editor.commit();
 			initJump();
 		} catch (Exception e) {
@@ -197,11 +199,10 @@ public class UiSplash extends BaseUi {
 
 	void showUnSuccess() {
 
-		Activity activity = this;  
-        while (activity.getParent() != null) {  
-            activity = activity.getParent();  
-        }  
-		new AlertDialog.Builder(activity).setCancelable(false)
+		while (!isActivityFocused) {
+			new InitTask().execute((Void) null);
+		}
+		new AlertDialog.Builder(this).setCancelable(false)
 				.setIcon(R.drawable.ic_launcher).setTitle("大工助手")
 				.setMessage("网络连接不成功，是否重试？")
 				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -218,5 +219,14 @@ public class UiSplash extends BaseUi {
 						doFinish();
 					}
 				}).show();
+	}
+	
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		// TODO Auto-generated method stub
+		super.onWindowFocusChanged(hasFocus);
+		if(hasFocus){
+			isActivityFocused  = true;
+		}
 	}
 }

@@ -155,7 +155,7 @@ public class UiNews extends BaseUi {// widget
 			listNews.get(taskIndex).clear();
 			listNews.add(taskIndex,
 					(ArrayList<News>) message.getResultList("News"));
-			toastS("刷新成功");
+			// toastS("刷新成功");
 			this.initPagerViewData();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -65,7 +65,8 @@ public class FragBbs extends BaseFragment {
 	@Override
 	public void onDestroyView(){
 		super.onDestroyView();
-		bt_add.setVisibility(View.GONE); // bug
+		if(bt_add!=null)
+			bt_add.setVisibility(View.GONE); // bug
 	}
 
 	@Override

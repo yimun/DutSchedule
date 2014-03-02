@@ -14,11 +14,13 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginBottom="240dp"
             android:background="@drawable/popup_bg"
             android:cacheColorHint="@color/none"
             android:divider="@color/pull_refresh_textview"
             android:dividerHeight="1dp"
-            android:listSelector="@null" >
+            android:listSelector="@null"
+            android:maxHeight="240dp" >
 
         </ListView>
     </RelativeLayout>

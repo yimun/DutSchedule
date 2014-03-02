@@ -10,7 +10,7 @@ public final class C {
 	// preference name 
 	public static final String PREFERENCES_NAME = "com.siwe.dutschedule.pref";
 	// do show debug message
-	public static final boolean DEBUG_MODE = false;
+	public static final boolean DEBUG_MODE = true;
 	
 	public static final class dir {
 		public static final String base				= "/sdcard/dutschedule";
@@ -20,13 +20,12 @@ public final class C {
 	
 	public static final class api {
 		public static String base	;
-		//public static String base				= "http://yimutest.sinaapp.com/dutserver/index.php?r=";
-		//public static final String base				= "http://58.155.223.1:8083/index.php?r=";
 		public static void setBase(String base) {
 			api.base = base;
 		}
 
 		public static final String initsource       = "http://yimulinwei.sinaapp.com";
+		public static final String config           = "/appconfig.php";
 		public static final String download         = "/sources/Duthelper(video).apk";
 		
 		public static final String index			= "admin/index";

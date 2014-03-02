@@ -34,7 +34,7 @@ public class ScheduleAppWidgetProvider extends AppWidgetProvider {
 
 		//list = link.doSelect();
 		dayOfWeek = TimeUtil.getDayOfWeek();
-		tempWeek = TimeUtil.getWeekOfTerm();
+		tempWeek = TimeUtil.getWeekOfTerm(context);
 		String week = dayOfWeek == 0 ? "周一" : dayOfWeek == 1 ? "周二"
 				: dayOfWeek == 2 ? "周三" : dayOfWeek == 3 ? "周四"
 						: dayOfWeek == 4 ? "周五" : dayOfWeek == 5 ? "周六" : "周日";
