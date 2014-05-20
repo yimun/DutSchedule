@@ -4,7 +4,7 @@
     android:versionCode="13"
     android:versionName="3.0.2" android:installLocation="preferExternal">
 	
-	<!--   test  -->
+	<!--  another gui test  -->
 
     <uses-sdk
         android:minSdkVersion="8"
