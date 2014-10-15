@@ -121,6 +121,7 @@ public class UiHome extends BaseUi {
 			BaseService.start(this, AutoLoginService.class);
 	}
 
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
@@ -193,9 +194,16 @@ public class UiHome extends BaseUi {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void onNetworkError(int taskId) {
+		// TODO Auto-generated method stub
+		// 不显示错误Toast
+	}
 
 	@Override
 	public void onTaskComplete(int taskId, BaseMessage message) {
+		super.onTaskComplete(taskId, message);
 		switch (taskId) {
 		case C.task.bbsunread:
 			if (!message.isSuccess())
@@ -210,7 +218,7 @@ public class UiHome extends BaseUi {
 				doDbTask();
 			} catch (Exception e) {
 				e.printStackTrace();
-				toastE(e.getMessage());
+//				toastE(e.getMessage());
 			}
 			break;
 		}

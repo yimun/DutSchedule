@@ -89,7 +89,11 @@ public class PopupManger {
 
 	public void dismiss() {
 		if (popupWindow != null && popupWindow.isShowing()) {
-			popupWindow.dismiss();
+			try {
+				popupWindow.dismiss();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

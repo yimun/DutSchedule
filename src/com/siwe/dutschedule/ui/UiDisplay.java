@@ -4,6 +4,7 @@ package com.siwe.dutschedule.ui;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -19,6 +20,7 @@ public class UiDisplay extends BaseUi {
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		path = getIntent().getStringExtra("channallist");
 		setContentView(R.layout.ui_video_view);
 		try{

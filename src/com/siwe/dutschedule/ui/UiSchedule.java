@@ -1,9 +1,14 @@
 package com.siwe.dutschedule.ui;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
+
+import org.json.JSONObject;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -122,7 +127,8 @@ public class UiSchedule extends BaseUi {
 				// 写库
 				sqlite = new ScheduleSqlite(this);
 				((ScheduleSqlite) sqlite).updateAll(datalist);
-
+				updateTermDate(message.getMessage());
+				tempWeek = currentWeek = TimeUtil.getWeekOfTerm(this);
 				this.refreshViewPager(currentWeek);
 				tempWeek = currentWeek;
 				updateWidget();
@@ -131,6 +137,23 @@ public class UiSchedule extends BaseUi {
 				toastE(C.err.server);
 			}
 			break;
+		}
+	}
+	
+	/** 每次更新课表后都更新本学期周次信息*/
+	private void updateTermDate(String msg){
+		try {
+			JSONObject jsonObject = new JSONObject(msg);
+			SharedPreferences preferences  = AppUtil.getSharedPreferences(this);;
+			Editor editor = preferences.edit();
+			Iterator<String> it = jsonObject.keys();
+			while (it.hasNext()) {
+				String jsonKey = it.next();
+				editor.putString(jsonKey, jsonObject.getString(jsonKey));
+			}
+			editor.commit();
+		} catch (Exception e) {
+			System.out.println("####error");
 		}
 	}
 
@@ -216,8 +239,10 @@ public class UiSchedule extends BaseUi {
 			toastE(C.err.emptydata);
 		if (week < 1)
 			this.tv_weekthis.setText("假期");
-		else
-			this.tv_weekthis.setText("第" + week + "周");
+		else{
+			String text = String.format("第 %d 周", week);
+			this.tv_weekthis.setText(text);
+		}
 
 		mPager = (ViewPager) findViewById(R.id.pager);
 		scrollViews = new ArrayList<View>();

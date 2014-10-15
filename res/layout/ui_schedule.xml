@@ -59,7 +59,7 @@
 
                 <RelativeLayout
                     android:id="@+id/THISWEEK"
-                    android:layout_width="45dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/actionbar_menu_selector" >
 
@@ -68,9 +68,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
+                        android:minWidth="45dp"
                         android:text="第1周"
                         android:textColorHint="@color/white"
                         android:textSize="15sp" />
+
                 </RelativeLayout>
 
                 <RelativeLayout

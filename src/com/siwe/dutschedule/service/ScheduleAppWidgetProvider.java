@@ -69,7 +69,7 @@ public class ScheduleAppWidgetProvider extends AppWidgetProvider {
 				continue;
 			}
 			for (Schedule item : list) {
-				if(!judgeIsTime(item))
+				if(!TimeUtil.judgeIsTime(item,tempWeek))
 					continue;
 				int seque = Integer.valueOf(item.getSeque())/2;
 				remoteViews.setTextViewText(tvIds[seque], head[seque] + item.getName()
@@ -83,26 +83,6 @@ public class ScheduleAppWidgetProvider extends AppWidgetProvider {
 
 	}
 
-	// 判断课程是否在上课周内
-	private boolean judgeIsTime(Schedule item) {
-		try {
-			String weeks = item.getWeeks();
-			String values[] = weeks.split("-|周");
-			if(values==null || values.length < 2)
-				return true;
-			int from = Integer.parseInt(values[0]);
-			int to = Integer.parseInt(values[1]);
-			
-			if (tempWeek < from || tempWeek > to)
-				return false;
-			else
-				return true;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return true;
-		}
-	}
 
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {

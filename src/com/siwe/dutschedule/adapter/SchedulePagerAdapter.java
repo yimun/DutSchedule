@@ -1,6 +1,8 @@
 package com.siwe.dutschedule.adapter;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -15,6 +17,7 @@ import com.siwe.dutschedule.R;
 import com.siwe.dutschedule.base.BaseUi;
 import com.siwe.dutschedule.model.Schedule;
 import com.siwe.dutschedule.ui.UiClassDetail;
+import com.siwe.dutschedule.util.TimeUtil;
 
 public class SchedulePagerAdapter extends PagerAdapter {
 
@@ -49,7 +52,7 @@ public class SchedulePagerAdapter extends PagerAdapter {
 		for (Schedule item : listData) {
 			day = Integer.valueOf(item.getWeekday()) - 1;
 			no = (Integer.valueOf(item.getSeque())) / 2;
-			if (!judgeIsTime(item)) { // 不再上课周内
+			if (!TimeUtil.judgeIsTime(item,weekToShow)) { // 不再上课周内
 				continue;
 			}
 			// 记录下所有对象
@@ -66,25 +69,7 @@ public class SchedulePagerAdapter extends PagerAdapter {
 		}
 	}
 
-	// 判断课程是否在上课周内
-	private boolean judgeIsTime(Schedule item) {
-		try {
-			String weeks = item.getWeeks();
-			String values[] = weeks.split("-|周");
-			if(values==null || values.length < 2)
-				return true;
-			int from = Integer.parseInt(values[0]);
-			int to = Integer.parseInt(values[1]);
-			if (weekToShow < from || weekToShow > to)
-				return false;
-			else
-				return true;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return true;
-		}
-	}
+	
 
 	private void setAllEvent() {
 

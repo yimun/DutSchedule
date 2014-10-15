@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
@@ -32,6 +33,7 @@ public class BaseUi extends FragmentActivity {
 	protected BaseTaskPool taskPool;
 	protected BaseSqlite sqlite;
 	protected boolean showLoadBar = false;
+	protected boolean isPaused = true; // 若当前activity不可见，不响应回调操作
 
 	public boolean isStringEmpty(String str) {
 		if (str == null || str.equalsIgnoreCase(""))
@@ -43,7 +45,7 @@ public class BaseUi extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		checkBaseurl(); // 检查baseUrl
+//		checkBaseurl(); // 检查baseUrl
 		// debug memory
 		debugMemory("onCreate");
 		// async task handler
@@ -52,13 +54,15 @@ public class BaseUi extends FragmentActivity {
 		this.taskPool = new BaseTaskPool(this);
 		// init application
 		this.app = (BaseApp) this.getApplicationContext();
+		
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}
 
-	private void checkBaseurl() {
+	/*private void checkBaseurl() {
 		if(C.api.base == null)
 			C.api.setBase(AppUtil.getSharedPreferences(this).getString("baseurl",
 				""));
-	}
+	}*/
 
 	@Override
 	protected void onResume() {
@@ -66,6 +70,7 @@ public class BaseUi extends FragmentActivity {
 		// debug memory
 		debugMemory("onResume");
 		MobclickAgent.onResume(this); // umeng
+		isPaused = false;
 	}
 
 	@Override
@@ -74,6 +79,7 @@ public class BaseUi extends FragmentActivity {
 		// debug memory
 		debugMemory("onPause");
 		MobclickAgent.onPause(this); // umeng
+		isPaused = true;
 	}
 
 	@Override
@@ -111,6 +117,7 @@ public class BaseUi extends FragmentActivity {
 	}
 
 	public void toastE(String msg) {
+//		ToastUtil.doShowToast(this, msg);
 		ToastUtil.doShowEToast(this, msg);
 	}
 
@@ -298,7 +305,8 @@ public class BaseUi extends FragmentActivity {
 
 	public void doTaskAsync(int taskId, String taskUrl,
 			HashMap<String, String> taskArgs) {
-		showLoadBar();
+		if(taskId != C.task.bbsunread)
+			showLoadBar();
 		taskPool.addTask(taskId, taskUrl, taskArgs, new BaseTask() {
 			@Override
 			public void onComplete(String httpResult) {
@@ -320,7 +328,9 @@ public class BaseUi extends FragmentActivity {
 	 * @param message
 	 */
 	public void onTaskComplete(int taskId, BaseMessage message) {
-		// TODO
+		if(isPaused){
+			return;
+		}
 	}
 
 	/**
@@ -329,15 +339,22 @@ public class BaseUi extends FragmentActivity {
 	 * @param taskId
 	 */
 	public void onTaskComplete(int taskId) {
-
+		if(isPaused){
+			return;
+		}
 	}
 
 	public void onNetworkError(int taskId) {
+		if(isPaused){
+			return;
+		}
 		toastE(C.err.network);
 	}
 
 	public void onDbReadComplete(int taskId) {
-
+		if(isPaused){
+			return;
+		}
 	}
 
 	// //////////////////////////////////////////////////////////////////////////////////////////////

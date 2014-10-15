@@ -37,12 +37,17 @@ public class BaseHandler extends Handler {
 					e.printStackTrace();
 				}
 				
-			} else if (!AppUtil.isEmptyInt(taskId)) {
+			}else{
+				taskId = msg.getData().getInt("task");
+				ui.onNetworkError(taskId);
+			}
+				/*else if (!AppUtil.isEmptyInt(taskId)) {
+			}
 				ui.toastE(C.err.server);
 				//ui.onTaskComplete(taskId,null);
 			} else {
 				ui.toastE(C.err.server);
-			}
+			}*/
 			break;
 		case BaseTask.NETWORK_ERROR:
 			ui.hideLoadBar();

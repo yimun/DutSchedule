@@ -129,7 +129,7 @@ public class AutoLoginService extends BaseService {
 		BaseService.stop(getApplicationContext(),
 				AutoLoginService.class);
 		if(isFirst){
-			toastE(C.err.network);
+			//toastE(C.err.network);
 			isFirst = false;
 		}
 	}

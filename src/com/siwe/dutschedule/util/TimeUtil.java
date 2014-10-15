@@ -5,6 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.siwe.dutschedule.model.Schedule;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,7 +27,7 @@ public class TimeUtil {
 		return dayOfWeek;
 	}
 
-	
+	/**获取学期开始结束的日期*/
 	private static Calendar[] getTermDate(Context ctx){
 		Calendar[] cal = new Calendar[2];
 		cal[0] = Calendar.getInstance();
@@ -33,11 +37,13 @@ public class TimeUtil {
 		SharedPreferences sp = AppUtil.getSharedPreferences(ctx);
 		String dateBegin = sp.getString("termbegin", "2014-2-24");
 		String dateOver  = sp.getString("termover", "2014-6-22");
+		System.out.println("#####begin="+dateBegin+"over="+dateOver);
 		try {
 			cal[0].setTime(sf.parse(dateBegin));
 			cal[1].setTime(sf.parse(dateOver));
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("#####getTermDate() exception");
 			return null;
 		}
 		return cal;
@@ -55,14 +61,25 @@ public class TimeUtil {
 		Calendar[] cal = getTermDate(context);
 		if(cal == null)
 			return 0;
-		
+		long b = cal[0].getTimeInMillis();
+		long o = cal[1].getTimeInMillis();
+		long cur = current.getTimeInMillis();
+		if(cur >= b && cur <=o ){		//判断是否在本学期内
+			long d = (cur-b)/(1000*3600*24); 
+			int weekOfTerm = (int)d/7+1;// 需要加1
+			return weekOfTerm;
+		}else{
+			return 0;
+		}
+		/*long d = (o-b)/(1000*3600*24); 
 		int currentWeek = current.get(Calendar.WEEK_OF_YEAR);
 		int beginWeek = cal[0].get(Calendar.WEEK_OF_YEAR);
 		int overWeek = cal[1].get(Calendar.WEEK_OF_YEAR);
+		System.out.println("#####curr="+currentWeek+"beginWeek="+beginWeek+"overWeek="+overWeek);
 		if(currentWeek >= beginWeek && currentWeek <= overWeek)
 			return currentWeek - beginWeek + 1;
 		else 
-			return 0;
+			return 0;*/
 	}
 	
 	/**
@@ -73,9 +90,10 @@ public class TimeUtil {
 		Calendar[] cal = getTermDate(context);
 		if(cal == null)
 			return 0;
-		int beginWeek = cal[0].get(Calendar.WEEK_OF_YEAR);
-		int overWeek = cal[1].get(Calendar.WEEK_OF_YEAR);
-		return overWeek-beginWeek+1;
+		long b = cal[0].getTimeInMillis();
+		long o = cal[1].getTimeInMillis();
+		long d = (o-b)/(1000*3600*24); 
+		return (int)d/7+1;
 	}
 
 	
@@ -131,6 +149,33 @@ public class TimeUtil {
 		}
 		return new SimpleDateFormat(sb.toString(), Locale.CHINA).format(date);
 
+	}
+	
+	// 判断课程是否在上课周内
+	public static boolean judgeIsTime(Schedule item,int weekToShow) {
+		try {
+			String weeks = item.getWeeks();
+			Matcher matcher = Pattern.compile("\\d+").matcher(weeks);
+			int from,to;
+			from = 50;
+			to = 0;
+			while (matcher.find()){
+				String s = matcher.group();
+				int x = Integer.valueOf(s);
+				if(x < from)
+					from = x;
+				if(x > to)
+					to = x;
+			}
+			if (weekToShow < from || weekToShow > to)
+				return false;
+			else
+				return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return true;
+		}
 	}
 
 }

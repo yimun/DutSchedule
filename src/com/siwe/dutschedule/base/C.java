@@ -19,10 +19,10 @@ public final class C {
 	}
 	
 	public static final class api {
-		public static String base	;
-		public static void setBase(String base) {
+		public static String base = "http://yimutest.sinaapp.com/dutserver/index.php?r=";
+		/*public static void setBase(String base) {
 			api.base = base;
-		}
+		}*/
 
 		public static final String initsource       = "http://yimulinwei.sinaapp.com";
 		public static final String config           = "/appconfig.php";
@@ -87,11 +87,11 @@ public final class C {
 	}
 	
 	public static final class err {
-		public static final String network			= "网络错误";
-		public static final String server			= "服务器连接错误";
-		public static final String jsonFormat		= "消息格式错误";
+		public static final String network			= "网络有点不给力";
+		public static final String server			= "网络有点不给力";
+		public static final String jsonFormat		= "服务器消息格式错误";
 		public static final String auth             = "用户名或密码错误";
-		public static final String emptydata        = "暂无数据请刷新";
+		public static final String emptydata        = "暂无数据，刷新看看";
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////

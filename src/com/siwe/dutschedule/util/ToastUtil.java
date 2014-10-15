@@ -36,11 +36,11 @@ public abstract class ToastUtil {
 	}
 
 	public static void doShowSToast(final Context context, String message) {
-		adoShowToast(context, R.drawable.icon_success, message);
+		adoShowToast(context, R.drawable.abs__ic_cab_done_holo_dark, message);
 	}
 
 	public static void doShowEToast(final Context context, String message) {
-		adoShowToast(context, R.drawable.icon_error, message);
+		adoShowToast(context, R.drawable.abs__ic_clear_normal, message);
 	}
 
 	public static void adoShowToast(final Context ui, int icon, String message) {

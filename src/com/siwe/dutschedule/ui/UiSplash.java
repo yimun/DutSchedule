@@ -69,10 +69,11 @@ public class UiSplash extends BaseUi {
 		preferences = AppUtil.getSharedPreferences(this);
 		initUmeng();
 		initBaiduPush();
-		initBase();
+		initJump();
+		//initBase();
 	}
 
-	private void initBase() {
+	/*private void initBase() {
 		if (hasGetToday()) {
 			initJump();
 			return;
@@ -92,7 +93,7 @@ public class UiSplash extends BaseUi {
 			System.out.println("not today");
 			return false;
 		}
-	}
+	}*/
 
 	private void initUmeng() {
 		// 错误收集
@@ -119,7 +120,7 @@ public class UiSplash extends BaseUi {
 
 	private void initJump() {
 
-		C.api.setBase(preferences.getString("baseurl", ""));
+		//C.api.setBase(preferences.getString("baseurl", ""));
 
 		isFirstIn = preferences.getBoolean("isFirst", true);
 		if (isFirstIn) {
@@ -136,7 +137,7 @@ public class UiSplash extends BaseUi {
 		}
 	}
 
-	public class InitTask extends AsyncTask<Void, Void, Boolean> {
+	/*public class InitTask extends AsyncTask<Void, Void, Boolean> {
 		private String resultSrc;
 
 		@Override
@@ -228,5 +229,5 @@ public class UiSplash extends BaseUi {
 		if(hasFocus){
 			isActivityFocused  = true;
 		}
-	}
+	}*/
 }
