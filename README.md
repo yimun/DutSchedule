@@ -1,4 +1,4 @@
-# Deprecated
+# @Deprecated
 
 # DutSchedule -大工助手
 大连理工大学校园助手，获取课表，成绩信息，以及课程论坛功能
